@@ -1,4 +1,4 @@
-# ppb_test
+# Sneakers App Sole City Kicks
 
 A new Flutter project.
 

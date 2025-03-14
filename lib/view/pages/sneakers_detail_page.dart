@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-
-class Sneaker {
-  final String name;
-  final String imagePath;
-
-  Sneaker({required this.name, required this.imagePath});
-}
+import 'package:ppb_test/models/shoes.dart';
 
 class SneakersDetailPage extends StatelessWidget {
-  final Sneaker sneaker;
+  final Shoes sneaker;
   const SneakersDetailPage({super.key, required this.sneaker});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(sneaker.name)),
+      appBar: AppBar(),
       body: Stack(
         children: [
           Positioned.directional(
@@ -51,10 +45,11 @@ class SneakersDetailPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text(
-                        'This sneaker is a must-have for any sneakerhead. '
-                        'It combines style and comfort, making it perfect for any occasion.',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      Text(
+                        sneaker.description,
+                        style: const TextStyle(
+                          fontSize: 16,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(

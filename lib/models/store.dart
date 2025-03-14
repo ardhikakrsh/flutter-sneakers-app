@@ -69,10 +69,56 @@ class Store {
         price: 1800000,
         size: [40, 41, 42, 43, 44],
         category: SneakersCategory.sneaker),
-
+    Shoes(
+        name: 'Nike P-6000 Flat Pewter',
+        imagePath: 'assets/img/sneaker/p6000_flatpewter.png',
+        description:
+            'The Flat Pewter iteration of the Nike P-6000 sports of base of matte gray mesh overlaid with strips of white leather and metallic-looking synthetic material with hits of aqua-green TPU.',
+        price: 1900000,
+        size: [40, 41, 42, 43, 44],
+        category: SneakersCategory.sneaker),
+    Shoes(
+        name: 'Nike P-6000 Metallic Silver Sail',
+        imagePath: 'assets/img/sneaker/p6000_metallic.png',
+        description:
+            'The Metallic Silver Nike P-6000 features an upper base crafted from breathable metallic fabric. Both vertical and horizontal overlays are constructed of chrome synthetic leather course across the upper, making it glisten.',
+        price: 2100000,
+        size: [40, 41, 42, 43, 44],
+        category: SneakersCategory.sneaker),
     //running
-
+    Shoes(
+        name: 'Nike Air Zoom Alphafly Next% Barely Volt Orange',
+        imagePath: 'assets/img/running/alphafly_volt.png',
+        description:
+            'The Nike Air Zoom Alphafly Next Barely Volt Orange has responsive Zoom X foam cushioning, woven cotton laces, and sock-like construction for a snug fit.',
+        price: 3200000,
+        size: [40, 41, 42, 43, 44],
+        category: SneakersCategory.running),
+    Shoes(
+        name: 'Nike Air Zoom Alphafly NEXT% Eliud Kipchoge',
+        imagePath: 'assets/img/running/alphafly_eliud.png',
+        description:
+            'The Nike Air Zoom Alphafly Next Kenya is a high-performance running shoe designed for serious athletes. This shoe features Nike`s innovative Zoom Air technology, which provides responsive cushioning and a comfortable fit.',
+        price: 4240000,
+        size: [40, 41, 42, 43, 44],
+        category: SneakersCategory.running),
     //football
+    Shoes(
+        name: 'Nike Phantom GX Elite SE FG Thunder Pack',
+        imagePath: 'assets/img/football/phantom_thunder.png',
+        description:
+            'Introducing the Nike Phantom GX Elite SE FG "Thunder Pack", the ultimate weapon for field domination. These electrifying cleats ignite the pitch with their bold black and yellow "Thunder Pack" design.',
+        price: 8460000,
+        size: [40, 41, 42, 43, 44],
+        category: SneakersCategory.football),
+    Shoes(
+        name: 'Nike Mercurial Dream Speed Superfly 8 Elite FG Bright Mango',
+        imagePath: 'assets/img/football/mecurial_mango.png',
+        description:
+            'These high-performance Nike shoes combine style and functionality to boost your game. Whether you`re playing on grass or turf, these bright and bold sneakers will help you stand out.',
+        price: 6870000,
+        size: [40, 41, 42, 43, 44],
+        category: SneakersCategory.football),
   ];
 
   /*

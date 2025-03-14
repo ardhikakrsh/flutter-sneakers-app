@@ -1,6 +1,10 @@
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:ppb_test/models/cart_item.dart';
+
 import 'shoes.dart';
 
-class Store {
+class Store extends ChangeNotifier {
   final List<Shoes> _sneakers = [
     //basketball
     Shoes(
@@ -9,7 +13,7 @@ class Store {
         description:
             'The Nike Zoom GT Cut 2 Hyper Pink is part of the second edition of Nike’s Greater Than (GT) series with a focus on Air Zoom technology.',
         price: 2500000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
         name: 'Nike GT Cut 2 We Are All Greater',
@@ -17,7 +21,7 @@ class Store {
         description:
             'The Nike Zoom GT Cut 2 We Are All Greater is a basketball shoe from the Nike Zoom GT Cut 2 lineup that celebrates the power of unity and collective strength.',
         price: 2200000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
         name: 'Nike Kobe 4 Philly',
@@ -25,7 +29,7 @@ class Store {
         description:
             'Introducing the Nike Kobe 4 Protro Philly 2024, a stunning tribute to Kobe Bryant`s birthplace and the historical city of Philadelphia',
         price: 4200000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
         name: 'Nike Kobe 5 Undeafeated',
@@ -33,7 +37,15 @@ class Store {
         description:
             'The Nike Kobe 5 Protro Undefeated What If Multi is a unique pair of sneakers with right and left shoes, each sporting different colors such as black, metallic gold, university red, and white.',
         price: 5600000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
+        category: SneakersCategory.basketball),
+    Shoes(
+        name: 'Nike Kobe 6 Grinch',
+        imagePath: 'assets/img/basketball/kobe6grinch.png',
+        description:
+            'The Kobe 6 Grinch originally debuted in 2010 when Kobe Bryant’s Los Angeles Lakers faced LeBron James’ Miami Heat in a legendary match up on Christmas Day. This is the first Kobe 6 to receive the Kobe Protro treatment, a design process that takes classic Kobe designs and updates them with modern tech for improved performance.',
+        price: 9000000,
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
         name: 'Nike Kobe 8 Protro Radiant Emerald',
@@ -41,7 +53,7 @@ class Store {
         description:
             'This sneaker captures the essence of Kobe Bryant`s dynamic playstyle and his legacy on the court, featuring a sleek White, Radiant Emerald, White colorway that stands out in any crowd.',
         price: 5600000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
 
     //sneaker
@@ -51,7 +63,7 @@ class Store {
         description:
             'The Dark Mocha 1 was one of the most anticipated releases in 2020 due to its familiar colorblocking that referenced two of the greatest Jordan 1s of all-time, the Jordan 1 Travis Scott and the Jordan 1 Black Toe.',
         price: 5200000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
         name: 'Nike Dunk Low Georgetown',
@@ -59,7 +71,7 @@ class Store {
         description:
             'The Nike Dunk Low Georgetown arrives with a smooth grey leather upper with Midnight Navy overlays and Swooshes.',
         price: 2200000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
         name: 'Nike Dunk Low Grey Fog',
@@ -67,7 +79,7 @@ class Store {
         description:
             'The Nike Dunk Low Grey Fog features a white leather upper with Grey Fog leather overlays and Swooshes.',
         price: 1800000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
         name: 'Nike P-6000 Flat Pewter',
@@ -75,7 +87,7 @@ class Store {
         description:
             'The Flat Pewter iteration of the Nike P-6000 sports of base of matte gray mesh overlaid with strips of white leather and metallic-looking synthetic material with hits of aqua-green TPU.',
         price: 1900000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
         name: 'Nike P-6000 Metallic Silver Sail',
@@ -83,7 +95,7 @@ class Store {
         description:
             'The Metallic Silver Nike P-6000 features an upper base crafted from breathable metallic fabric. Both vertical and horizontal overlays are constructed of chrome synthetic leather course across the upper, making it glisten.',
         price: 2100000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     //running
     Shoes(
@@ -92,7 +104,7 @@ class Store {
         description:
             'The Nike Air Zoom Alphafly Next Barely Volt Orange has responsive Zoom X foam cushioning, woven cotton laces, and sock-like construction for a snug fit.',
         price: 3200000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.running),
     Shoes(
         name: 'Nike Air Zoom Alphafly NEXT% Eliud Kipchoge',
@@ -100,7 +112,7 @@ class Store {
         description:
             'The Nike Air Zoom Alphafly Next Kenya is a high-performance running shoe designed for serious athletes. This shoe features Nike`s innovative Zoom Air technology, which provides responsive cushioning and a comfortable fit.',
         price: 4240000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.running),
     //football
     Shoes(
@@ -109,7 +121,15 @@ class Store {
         description:
             'Introducing the Nike Phantom GX Elite SE FG "Thunder Pack", the ultimate weapon for field domination. These electrifying cleats ignite the pitch with their bold black and yellow "Thunder Pack" design.',
         price: 8460000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
+        category: SneakersCategory.football),
+    Shoes(
+        name: 'Nike Phantom GX Elite Gripknit DF FG Peak Ready Pack',
+        imagePath: 'assets/img/football/phantom_gripknit.png',
+        description:
+            'Elevate your game with the Nike Phantom GX Elite Gripknit FG "Peak Ready Pack". Engineered for precision control, this soccer cleat features a textured Gripknit upper for enhanced ball touch.',
+        price: 5160000,
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.football),
     Shoes(
         name: 'Nike Mercurial Dream Speed Superfly 8 Elite FG Bright Mango',
@@ -117,7 +137,7 @@ class Store {
         description:
             'These high-performance Nike shoes combine style and functionality to boost your game. Whether you`re playing on grass or turf, these bright and bold sneakers will help you stand out.',
         price: 6870000,
-        size: [40, 41, 42, 43, 44],
+        size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.football),
   ];
 
@@ -126,20 +146,84 @@ class Store {
   */
 
   List<Shoes> get sneakers => _sneakers;
+  List<CartItem> get cart => _cart;
 
   /*
   * operations 
   */
 
-  // add to chart
+  // user cart
+  final List<CartItem> _cart = [];
 
-  // remove from chart
+  // add to cart
+  void addToCart(Shoes shoes, selectedSize) {
+    // see if the item is already in the cart with the same shoes and size
+    CartItem? cartItem = _cart.firstWhereOrNull((item) {
+      // chek if the shoes same
+      bool isShoesSame = item.shoes == shoes;
 
-  // get total price of chart
+      // check if the size same
+      bool isSizeSame = item.selectedSize == selectedSize;
 
-  // get total number of items in chart
+      return isShoesSame && isSizeSame;
+    });
 
-  // clear chart
+    // if item already exists, increase the quantity
+    if (cartItem != null) {
+      cartItem.quantity++;
+    }
+    // otherwise, add new item to cart
+    else {
+      _cart.add(CartItem(
+        shoes: shoes,
+        selectedSize: selectedSize,
+      ));
+    }
+
+    notifyListeners();
+  }
+
+  // remove from cart
+  void removeFromCart(CartItem cartItem) {
+    // if quantity is more than 1, decrease the quantity
+    if (cartItem.quantity > 1) {
+      cartItem.quantity--;
+    }
+    // otherwise, remove the item from cart
+    else {
+      _cart.remove(cartItem);
+    }
+
+    notifyListeners();
+  }
+
+  // get total price of cart
+  int getTotalPrice() {
+    int totalPrice = 0;
+
+    for (CartItem cardItem in _cart) {
+      totalPrice += cardItem.shoes.price * cardItem.quantity;
+    }
+
+    return totalPrice;
+  }
+
+  // get total number of items in cart
+  int getTotalItems() {
+    int totalItems = 0;
+
+    for (CartItem cardItem in _cart) {
+      totalItems += cardItem.quantity;
+    }
+
+    return totalItems;
+  }
+
+  // clear cart
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
+  }
 
   /*
   * helpers 

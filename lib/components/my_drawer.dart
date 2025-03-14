@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppb_test/view/pages/chart_page.dart';
+import 'package:ppb_test/view/pages/cart_page.dart';
 import 'package:ppb_test/view/pages/settings_page.dart';
 import 'package:ppb_test/view/pages/welcome_page.dart';
 
@@ -30,11 +30,11 @@ class MyDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.shopping_cart, color: Colors.blue),
-              title: const Text('My Chart'),
+              title: const Text('My Cart'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ChartPage()),
+                  MaterialPageRoute(builder: (context) => const CartPage()),
                 );
               },
             ),

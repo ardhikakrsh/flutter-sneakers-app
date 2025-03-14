@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppb_test/view/pages/register_page.dart';
 import 'package:ppb_test/view/widget_tree.dart';
 import 'package:ppb_test/view/widgets/hero_widget.dart';
 
@@ -89,7 +90,25 @@ class _LoginPageState extends State<LoginPage> {
                 child:
                     const Text('Login', style: TextStyle(color: Colors.white)),
               ),
-              // const Spacer(),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Don\'t have an account?'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterPage()));
+                    },
+                    child: const Text(
+                      ' Register here',
+                      style: TextStyle(color: Colors.teal),
+                    ),
+                  ),
+                ],
+              ),
               const Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(

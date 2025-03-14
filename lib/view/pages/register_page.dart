@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppb_test/view/pages/login_page.dart';
 import 'package:ppb_test/view/pages/welcome_page.dart';
 import 'package:ppb_test/view/widgets/hero_widget.dart';
 
@@ -107,7 +108,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: const Text('Register',
                     style: TextStyle(color: Colors.white)),
               ),
-              // const Spacer(),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Already have an account?'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
+                    },
+                    child: const Text(
+                      ' Login here',
+                      style: TextStyle(color: Colors.teal),
+                    ),
+                  ),
+                ],
+              ),
               const Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(

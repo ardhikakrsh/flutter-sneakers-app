@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ppb_test/data/notifiers.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -21,8 +23,37 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           // automaticallyImplyLeading: false,
         ),
-        body: const Center(
-          child: Text('Settings Page'),
+        body: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              margin: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Dark Mode',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                  ),
+                  ValueListenableBuilder(
+                    valueListenable: isDarkModeNotifier,
+                    builder: (context, isDarkMode, child) {
+                      return CupertinoSwitch(
+                        value: !isDarkMode,
+                        onChanged: (value) {
+                          isDarkModeNotifier.value = !isDarkModeNotifier.value;
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+            )
+          ],
         ));
   }
 }

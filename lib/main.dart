@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ppb_test/data/notifiers.dart';
+import 'package:ppb_test/models/store.dart';
 import 'package:ppb_test/view/pages/welcome_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Store(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {

@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => SneakersDetailPage(
-                                      sneaker: categoryShoes[index],
+                                      shoe: categoryShoes[index],
                                     ),
                                   ),
                                 );

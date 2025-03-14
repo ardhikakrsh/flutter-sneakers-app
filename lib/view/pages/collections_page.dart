@@ -25,7 +25,7 @@ class CollectionsPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SneakersDetailPage(sneaker: shoes),
+                  builder: (context) => SneakersDetailPage(shoe: shoes),
                 ),
               );
             },

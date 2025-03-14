@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppb_test/components/my_drawer.dart';
 import 'package:ppb_test/data/notifiers.dart';
-import 'package:ppb_test/view/pages/chart_page.dart';
+import 'package:ppb_test/view/pages/cart_page.dart';
 import 'package:ppb_test/view/pages/collections_page.dart';
 import 'package:ppb_test/view/pages/home_page.dart';
 import 'package:ppb_test/view/pages/profile_page.dart';
@@ -39,7 +39,7 @@ class WidgetTree extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const ChartPage();
+                    return const CartPage();
                   },
                 ),
               );

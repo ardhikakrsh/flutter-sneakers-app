@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "729070114139",
+    "project_id": "sole-city-kicks",
+    "storage_bucket": "sole-city-kicks.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729070114139:android:36d5f267122f67f4d4f67e",
+        "android_client_info": {
+          "package_name": "com.example.ppb_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lQUMrRtTHMZDTAUSS_KJ0nuPJpzd380"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

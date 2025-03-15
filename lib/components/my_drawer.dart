@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/view/pages/cart_page.dart';
 import 'package:ppb_test/view/pages/settings_page.dart';
-import 'package:ppb_test/view/pages/welcome_page.dart';
+import 'package:ppb_test/service/auth/welcome_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
+  void logout() {
+    final authService = AuthService();
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +58,7 @@ class MyDrawer extends StatelessWidget {
               leading: const Icon(Icons.logout, color: Colors.red),
               title: const Text('Logout'),
               onTap: () {
+                logout();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const WelcomePage()),

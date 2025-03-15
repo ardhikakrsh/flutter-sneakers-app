@@ -1,7 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/view/pages/login_page.dart';
-import 'package:ppb_test/view/pages/welcome_page.dart';
 import 'package:ppb_test/view/widgets/hero_widget.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -12,9 +14,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController controllerEmail = TextEditingController();
-  TextEditingController controllerPass = TextEditingController();
-  TextEditingController controllerConfirmPass = TextEditingController();
+  final controllerEmail = TextEditingController();
+  final controllerPass = TextEditingController();
+  final controllerConfirmPass = TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
 
@@ -154,7 +156,9 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void onRegisterPressed() {
+  void onRegisterPressed() async {
+    final authService = AuthService();
+
     if (controllerEmail.text.isEmpty ||
         controllerPass.text.isEmpty ||
         controllerConfirmPass.text.isEmpty) {
@@ -175,11 +179,22 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
 
-    showAnimation(
-      'Registration Success!',
-      'assets/lotties/login.json',
-      true,
-    );
+    if (controllerPass.text == controllerConfirmPass.text) {
+      try {
+        await authService.signUpWithEmailPassword(
+          controllerEmail.text,
+          controllerPass.text,
+        );
+        showAnimation(
+          'Registration Success!',
+          'assets/lotties/login.json',
+          true,
+        );
+      } catch (e) {
+        showAnimation(
+            'Registration Failed', 'assets/lotties/error.json', false);
+      }
+    }
   }
 
   void showAnimation(String message, String animationPath, bool isSuccess) {
@@ -216,7 +231,7 @@ class _RegisterPageState extends State<RegisterPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const WelcomePage(),
+            builder: (context) => const LoginPage(),
           ),
         );
       });

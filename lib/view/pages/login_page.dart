@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/view/pages/register_page.dart';
 import 'package:ppb_test/view/widget_tree.dart';
 import 'package:ppb_test/view/widgets/hero_widget.dart';
@@ -15,8 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPass = TextEditingController();
   bool isPasswordVisible = false;
-  String confirmedEmail = 'dhika';
-  String confirmedPassword = '123';
 
   @override
   void dispose() {
@@ -132,20 +133,18 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void onLoginPressed() {
-    if (controllerEmail.text == confirmedEmail &&
-        controllerPass.text == confirmedPassword) {
-      showAnimation(
-        'Login Success!',
-        'assets/lotties/login.json',
-        true,
+  void onLoginPressed() async {
+    final authService = AuthService();
+
+    // try sign in
+    try {
+      await authService.signInWithEmailPassword(
+        controllerEmail.text,
+        controllerPass.text,
       );
-    } else {
-      showAnimation(
-        'Login Failed!',
-        'assets/lotties/error.json',
-        false,
-      );
+      showAnimation('Login Success!', 'assets/lotties/login.json', true);
+    } catch (e) {
+      showAnimation('Login Failed', 'assets/lotties/error.json', false);
     }
   }
 

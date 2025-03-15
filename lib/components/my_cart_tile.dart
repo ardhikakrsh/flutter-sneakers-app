@@ -12,14 +12,16 @@ class MyCartTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Consumer<Store>(
       builder: (context, store, child) => Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade300,
+          color: isDarkMode ? Colors.grey[900] : Colors.blueGrey[100],
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withOpacity(0.4),
               blurRadius: 8,
               spreadRadius: 2,
               offset: const Offset(0, 4),
@@ -50,8 +52,8 @@ class MyCartTile extends StatelessWidget {
                 children: [
                   Text(
                     cartItem.shoes.name,
-                    style: const TextStyle(
-                      color: Colors.black,
+                    style: TextStyle(
+                      color: isDarkMode ? Colors.white : Colors.black87,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -63,10 +65,10 @@ class MyCartTile extends StatelessWidget {
                       symbol: 'Rp',
                       decimalDigits: 0,
                     ).format(cartItem.shoes.price),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Colors.green,
+                      color: isDarkMode ? Colors.greenAccent : Colors.green,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -76,7 +78,7 @@ class MyCartTile extends StatelessWidget {
                         : 'Size: ${cartItem.selectedSize}',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey.shade700,
+                      color: isDarkMode ? Colors.white70 : Colors.black87,
                     ),
                   ),
                 ],

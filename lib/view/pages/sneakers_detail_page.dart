@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppb_test/components/my_button.dart';
 import 'package:ppb_test/models/shoes.dart';
 import 'package:intl/intl.dart';
 import 'package:ppb_test/models/store.dart';
@@ -14,13 +15,18 @@ class SneakersDetailPage extends StatefulWidget {
 
 class _SneakersDetailPageState extends State<SneakersDetailPage> {
   double? selectedSize;
+
   // method add to cart
   void addToCart(Shoes shoe, selectedSize) {
-    // if size is not selected
     if (selectedSize == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please select a size first'),
+        SnackBar(
+          content: const Text('Please select a size first'),
+          backgroundColor: Colors.redAccent,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
       );
       return;
@@ -31,6 +37,8 @@ class _SneakersDetailPageState extends State<SneakersDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sneaker Detail'),
@@ -38,23 +46,45 @@ class _SneakersDetailPageState extends State<SneakersDetailPage> {
       ),
       body: Stack(
         children: [
-          // shoes image
-          Image.asset(
-            widget.shoe.imagePath,
-            fit: BoxFit.cover,
-            // height: 300,
-            width: double.infinity,
+          // Sneaker Image
+          Positioned(
+            top: 40,
+            left: 30,
+            right: 30,
+            child: Hero(
+              tag: widget.shoe.imagePath,
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 15,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
+                ),
+                child: Image.asset(widget.shoe.imagePath),
+              ),
+            ),
           ),
+
+          // Draggable Sheet
           DraggableScrollableSheet(
             initialChildSize: 0.6,
             minChildSize: 0.3,
             maxChildSize: 0.8,
             builder: (context, scrollController) {
               return Container(
-                decoration: const BoxDecoration(
-                  color: Colors.teal,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
-                  boxShadow: [BoxShadow(color: Colors.black, blurRadius: 10)],
+                decoration: BoxDecoration(
+                  color: isDarkMode ? Colors.grey[900] : Colors.blueGrey[100],
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(22)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      blurRadius: 10,
+                    ),
+                  ],
                 ),
                 child: ListView(
                   controller: scrollController,
@@ -66,85 +96,104 @@ class _SneakersDetailPageState extends State<SneakersDetailPage> {
                         width: 40,
                         height: 5,
                         decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: isDarkMode ? Colors.white : Colors.black,
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                    ), // sneaker name
+                    ),
+
+                    // Sneaker Name
                     Text(
                       widget.shoe.name,
-                      style: const TextStyle(
-                        fontSize: 24,
+                      style: TextStyle(
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
+                        color: isDarkMode ? Colors.white : Colors.black87,
                       ),
                     ),
 
-                    // sneaker price
-                    const SizedBox(height: 2),
+                    // Sneaker Price
+                    const SizedBox(height: 5),
                     Text(
                       NumberFormat.currency(
                         locale: 'id',
                         symbol: 'Rp',
                         decimalDigits: 0,
                       ).format(widget.shoe.price),
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        color: isDarkMode ? Colors.greenAccent : Colors.green,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
-                    //sneaker description
+                    // Sneaker Description
                     const SizedBox(height: 20),
                     Text(
                       widget.shoe.description,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
+                        color: isDarkMode ? Colors.grey[400] : Colors.black87,
                       ),
                     ),
 
-                    //pick your size
+                    // Select Size
                     const SizedBox(height: 20),
-                    const Text(
+                    Text(
                       "Select Size:",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: isDarkMode ? Colors.white : Colors.black87,
+                      ),
                     ),
 
-                    //snearker size
+                    // Sneaker Size
                     const SizedBox(height: 8),
                     Wrap(
                       spacing: 10,
                       children: widget.shoe.size.map((size) {
                         return SizedBox(
-                          width: 67, // Atur lebar yang sama untuk semua kotak
+                          width: 67,
                           child: ChoiceChip(
                             label: Center(
-                              child: Text(size % 1 == 0
-                                  ? size.toInt().toString()
-                                  : size.toString()),
+                              child: Text(
+                                size % 1 == 0
+                                    ? size.toInt().toString()
+                                    : size.toString(),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: selectedSize == size
+                                      ? Colors.white
+                                      : isDarkMode
+                                          ? Colors.white70
+                                          : Colors.black87,
+                                ),
+                              ),
                             ),
                             selected: selectedSize == size,
+                            selectedColor: Colors.blueAccent,
                             onSelected: (selected) {
                               setState(() {
                                 selectedSize = selected ? size : null;
                               });
                             },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         );
                       }).toList(),
                     ),
 
                     const SizedBox(height: 40),
-                    ElevatedButton(
-                      onPressed: () => addToCart(widget.shoe, selectedSize),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.shopping_cart),
-                          SizedBox(width: 10),
-                          Text('Add to Cart'),
-                        ],
-                      ),
+                    MyButton(
+                      text: 'Add to Cart',
+                      icon: Icons.shopping_cart,
+                      onPressed: () {
+                        addToCart(widget.shoe, selectedSize);
+                      },
                     ),
                   ],
                 ),

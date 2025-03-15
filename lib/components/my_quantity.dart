@@ -19,7 +19,7 @@ class MyQuantity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: Colors.blueAccent,
         borderRadius: BorderRadius.circular(50),
       ),
       padding: const EdgeInsets.all(8),

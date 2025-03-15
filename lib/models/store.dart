@@ -1,5 +1,8 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:ppb_test/models/cart_item.dart';
 
 import 'shoes.dart';
@@ -230,6 +233,60 @@ class Store extends ChangeNotifier {
   */
 
   // generate a receipt
+  String displayReceipt() {
+    final receipt = StringBuffer();
+    // add header
+
+    receipt.writeln("Here's your receipt:");
+    receipt.writeln('');
+    receipt.writeln(
+        '----------------------------------------------------------------');
+
+    // generate a unique transaction id
+    receipt.writeln('Receipt #: ${generateTransactionId()}');
+
+    // format the date to include up to second only
+    String formattedDate =
+        DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+
+    receipt.writeln('Date: $formattedDate');
+    receipt.writeln(
+        '----------------------------------------------------------------');
+    receipt.writeln('');
+
+    for (final cartItem in _cart) {
+      receipt.writeln(
+        '${cartItem.shoes.name} - ${formatSize(cartItem.selectedSize)}:',
+      );
+      receipt.writeln(
+          '${formatPrice(cartItem.shoes.price)} x ${cartItem.quantity}');
+      receipt.writeln('');
+    }
+
+    receipt.writeln(
+        '----------------------------------------------------------------');
+    receipt.writeln('');
+    receipt.writeln('Total Items: ${getTotalItems()}');
+    receipt.writeln('Total Price: ${formatPrice(getTotalPrice())}');
+    return receipt.toString();
+  }
+
+  // format double value into money format
+  String formatPrice(int price) {
+    return NumberFormat.currency(
+      locale: 'id',
+      symbol: 'Rp',
+      decimalDigits: 0,
+    ).format(price);
+  }
+
+  // format double value into size format
+  String formatSize(double size) {
+    return size % 1 == 0 ? size.toInt().toString() : size.toString();
+  }
 
   // generate a unique id for each transaction
+  String generateTransactionId() {
+    return DateTime.now().millisecondsSinceEpoch.toString();
+  }
 }

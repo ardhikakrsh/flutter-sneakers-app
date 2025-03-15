@@ -17,6 +17,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     List<Shoes> categoryShoes = Store()
         .sneakers
         .where((shoes) => shoes.category == selectedCategory)
@@ -37,12 +39,15 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const Row(
                       children: [
-                        Text(
-                          'What sneakers\nare you looking for?',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            height: 1,
+                        Expanded(
+                          child: Text(
+                            'What sneakers\nare you looking for?',
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              height: 1.2,
+                            ),
+                            softWrap: true,
                           ),
                         ),
                       ],
@@ -71,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Positioned(
-                              top: 40,
+                              top: 30,
                               left: 15,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                                     'Find the latest\nsneakers here',
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 22,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       height: 1,
                                       shadows: [
@@ -137,6 +142,11 @@ class _HomePageState extends State<HomePage> {
                                   symbol: 'Rp',
                                   decimalDigits: 0,
                                 ).format(categoryShoes[index].price),
+                                style: TextStyle(
+                                  color: isDarkMode
+                                      ? Colors.greenAccent
+                                      : Colors.green,
+                                ),
                               ),
                               onTap: () {
                                 Navigator.push(

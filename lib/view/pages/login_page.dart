@@ -29,101 +29,104 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag, // Menutup keyboard saat scroll
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              const HeroWidget(
-                title: 'Login',
-              ),
-              const SizedBox(height: 30.0),
-              TextField(
-                controller: controllerEmail,
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-                onEditingComplete: () {
-                  setState(() {});
-                },
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: controllerPass,
-                obscureText: !isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isPasswordVisible = !isPasswordVisible;
-                      });
-                    },
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    const HeroWidget(title: 'Login'),
+                    const SizedBox(height: 30.0),
+
+                    // Email Input
+                    TextField(
+                      controller: controllerEmail,
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                onEditingComplete: () {
-                  setState(() {});
-                },
-              ),
-              const SizedBox(height: 10.0),
-              FilledButton(
-                onPressed: () {
-                  onLoginPressed();
-                },
-                style: FilledButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    shadowColor: Colors.blue.shade300,
-                    elevation: 5,
-                    minimumSize: const Size(
-                        double.infinity, 40.0) // Warna tombol lebih sesuai
+                    const SizedBox(height: 10.0),
+
+                    // Password Input
+                    TextField(
+                      controller: controllerPass,
+                      obscureText: !isPasswordVisible,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isPasswordVisible = !isPasswordVisible;
+                            });
+                          },
+                          icon: Icon(
+                            isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                        ),
+                      ),
                     ),
-                child:
-                    const Text('Login', style: TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Don\'t have an account?'),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const RegisterPage()));
-                    },
-                    child: const Text(
-                      ' Register here',
-                      style: TextStyle(color: Colors.blueAccent),
+                    const SizedBox(height: 10.0),
+
+                    // Login Button
+                    FilledButton(
+                      onPressed: onLoginPressed,
+                      style: FilledButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        shadowColor: Colors.blue.shade300,
+                        elevation: 5,
+                        minimumSize: const Size(double.infinity, 40.0),
+                      ),
+                      child: const Text('Login',
+                          style: TextStyle(color: Colors.white)),
                     ),
-                  ),
-                ],
-              ),
-              const Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    '© 2025 Sole City Kicks',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                    const SizedBox(height: 10.0),
+
+                    // Register Link
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      children: [
+                        const Text('Don\'t have an account?'),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterPage(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            ' Register here',
+                            style: TextStyle(color: Colors.blueAccent),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+
+            // Copyright Text Paling Bawah
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                '© 2025 Sole City Kicks',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+          ],
         ),
       ),
     );

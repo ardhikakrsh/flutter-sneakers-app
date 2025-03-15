@@ -30,118 +30,125 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag, // Menutup keyboard saat scroll
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              const HeroWidget(
-                title: 'Register',
-              ),
-              const SizedBox(height: 30.0),
-              TextField(
-                controller: controllerEmail,
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: controllerPass,
-                obscureText: !isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isPasswordVisible = !isPasswordVisible;
-                      });
-                    },
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: controllerConfirmPass,
-                obscureText: !isConfirmPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Confirm Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isConfirmPasswordVisible = !isConfirmPasswordVisible;
-                      });
-                    },
-                    icon: Icon(
-                      isConfirmPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              FilledButton(
-                onPressed: () {
-                  onRegisterPressed();
-                },
-                style: FilledButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    shadowColor: Colors.blue.shade300,
-                    elevation: 5,
-                    minimumSize: const Size(
-                        double.infinity, 40.0) // Warna tombol lebih sesuai
-                    ),
-                child: const Text('Register',
-                    style: TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Already have an account?'),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()));
-                    },
-                    child: const Text(
-                      ' Login here',
-                      style: TextStyle(color: Colors.blueAccent),
-                    ),
-                  ),
-                ],
-              ),
-              const Align(
-                alignment: Alignment.bottomCenter,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag, // Menutup keyboard saat scroll
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    '© 2025 Sole City Kicks',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey),
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      const HeroWidget(
+                        title: 'Register',
+                      ),
+                      const SizedBox(height: 30.0),
+                      TextField(
+                        controller: controllerEmail,
+                        decoration: InputDecoration(
+                          hintText: 'Email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      TextField(
+                        controller: controllerPass,
+                        obscureText: !isPasswordVisible,
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isPasswordVisible = !isPasswordVisible;
+                              });
+                            },
+                            icon: Icon(
+                              isPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      TextField(
+                        controller: controllerConfirmPass,
+                        obscureText: !isConfirmPasswordVisible,
+                        decoration: InputDecoration(
+                          hintText: 'Confirm Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isConfirmPasswordVisible =
+                                    !isConfirmPasswordVisible;
+                              });
+                            },
+                            icon: Icon(
+                              isConfirmPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      FilledButton(
+                        onPressed: () {
+                          onRegisterPressed();
+                        },
+                        style: FilledButton.styleFrom(
+                            backgroundColor: Colors.blueAccent,
+                            shadowColor: Colors.blue.shade300,
+                            elevation: 5,
+                            minimumSize: const Size(double.infinity,
+                                40.0) // Warna tombol lebih sesuai
+                            ),
+                        child: const Text('Register',
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        children: [
+                          const Text('Already have an account?'),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginPage()),
+                              );
+                            },
+                            child: const Text(
+                              ' Login here',
+                              style: TextStyle(color: Colors.blueAccent),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                '© 2025 Sole City Kicks',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+          ],
         ),
       ),
     );

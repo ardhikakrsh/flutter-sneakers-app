@@ -83,7 +83,9 @@ class _LoginPageState extends State<LoginPage> {
                   onLoginPressed();
                 },
                 style: FilledButton.styleFrom(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: Colors.blueAccent,
+                    shadowColor: Colors.blue.shade300,
+                    elevation: 5,
                     minimumSize: const Size(
                         double.infinity, 40.0) // Warna tombol lebih sesuai
                     ),
@@ -104,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: const Text(
                       ' Register here',
-                      style: TextStyle(color: Colors.teal),
+                      style: TextStyle(color: Colors.blueAccent),
                     ),
                   ),
                 ],

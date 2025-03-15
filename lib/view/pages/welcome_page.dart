@@ -38,8 +38,10 @@ class WelcomePage extends StatelessWidget {
                         );
                       },
                       style: FilledButton.styleFrom(
-                        backgroundColor:
-                            Colors.teal, // Warna tombol lebih sesuai
+                        backgroundColor: Colors.blueAccent,
+                        shadowColor: Colors.blue.shade300,
+                        elevation: 5,
+                        // Warna tombol lebih sesuai
                       ),
                       child: const Text('Register',
                           style: TextStyle(color: Colors.white)),
@@ -55,8 +57,9 @@ class WelcomePage extends StatelessWidget {
                         );
                       },
                       style: TextButton.styleFrom(
-                        foregroundColor: Colors.teal, // Warna teks tombol
-                      ),
+                          foregroundColor: Colors.blueAccent,
+                          shadowColor: Colors.blue.shade300 // Warna teks tombol
+                          ),
                       child: const Text('Login'),
                     ),
                   ],

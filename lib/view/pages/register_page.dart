@@ -101,7 +101,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   onRegisterPressed();
                 },
                 style: FilledButton.styleFrom(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: Colors.blueAccent,
+                    shadowColor: Colors.blue.shade300,
+                    elevation: 5,
                     minimumSize: const Size(
                         double.infinity, 40.0) // Warna tombol lebih sesuai
                     ),
@@ -122,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     child: const Text(
                       ' Login here',
-                      style: TextStyle(color: Colors.teal),
+                      style: TextStyle(color: Colors.blueAccent),
                     ),
                   ),
                 ],

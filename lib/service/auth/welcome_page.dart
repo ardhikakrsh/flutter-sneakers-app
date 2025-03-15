@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ppb_test/view/pages/login_page.dart';
 import 'package:ppb_test/view/pages/register_page.dart';
-// import 'package:ppb_test/view/widget_tree.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});

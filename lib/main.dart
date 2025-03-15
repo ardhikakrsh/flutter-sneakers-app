@@ -1,10 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ppb_test/data/notifiers.dart';
+import 'package:ppb_test/firebase_options.dart';
 import 'package:ppb_test/models/store.dart';
-import 'package:ppb_test/view/pages/welcome_page.dart';
+import 'package:ppb_test/service/auth/auth_gate.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     ChangeNotifierProvider(
       create: (context) => Store(),
@@ -34,7 +40,7 @@ class _MyAppState extends State<MyApp> {
               brightness: isDarkMode ? Brightness.light : Brightness.dark,
             ),
           ),
-          home: const WelcomePage(),
+          home: const AuthGate(),
         );
       },
     );

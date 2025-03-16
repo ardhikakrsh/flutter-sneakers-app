@@ -45,6 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextField(
                       controller: controllerEmail,
                       decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.mail),
                         hintText: 'Email',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0),
@@ -58,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                       controller: controllerPass,
                       obscureText: !isPasswordVisible,
                       decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock),
                         hintText: 'Password',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/view/pages/cart_page.dart';
+import 'package:ppb_test/view/pages/history_page.dart';
 import 'package:ppb_test/view/pages/settings_page.dart';
 import 'package:ppb_test/service/auth/welcome_page.dart';
 
@@ -14,23 +15,30 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = AuthService().getCurrentUser();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return SafeArea(
       child: Drawer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.black87,
+                color: isDarkMode ? Colors.blueAccent : Colors.black87,
               ),
               accountName: Text(
-                'Sole City Kicks',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                user?.displayName ?? 'No Name',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
-              accountEmail: Text('info@solecity.com'),
+              accountEmail: Text(
+                user?.email ?? 'No Email',
+                style: TextStyle(color: Colors.white),
+              ),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage(
-                    'assets/img/logo2.png'), // Ganti dengan logo Anda
+                    'assets/icons/logo4.jpg'), // Ganti dengan logo Anda
                 backgroundColor: Colors.white,
               ),
             ),
@@ -55,6 +63,17 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.history, color: Colors.green),
+              title: const Text('History'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HistoryPage()),
+                );
+              },
+            ),
+            const Spacer(),
+            ListTile(
               leading: const Icon(Icons.logout, color: Colors.red),
               title: const Text('Logout'),
               onTap: () {
@@ -65,7 +84,6 @@ class MyDrawer extends StatelessWidget {
                 );
               },
             ),
-            const Spacer(),
             const Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(

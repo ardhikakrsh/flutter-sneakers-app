@@ -61,7 +61,7 @@ class CartPage extends StatelessWidget {
                     userCart.isEmpty
                         ? const Expanded(
                             child: Center(
-                              child: Text('Your cart is empty..'),
+                              child: Text('Your Cart is Empty! ☹️'),
                             ),
                           )
                         : Expanded(

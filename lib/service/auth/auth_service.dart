@@ -27,7 +27,8 @@ class AuthService {
   }
 
   // sign up
-  Future<UserCredential> signUpWithEmailPassword(String email, password) async {
+  Future<UserCredential> signUpWithEmailPassword(
+      String name, String email, password) async {
     try {
       // sign up user
       UserCredential userCredential =
@@ -35,6 +36,10 @@ class AuthService {
         email: email,
         password: password,
       );
+
+      // update user profile
+      await userCredential.user!.updateDisplayName(name);
+      await userCredential.user!.reload();
 
       return userCredential;
     } on FirebaseAuthException catch (e) {

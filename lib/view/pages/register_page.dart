@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ppb_test/service/auth/auth_service.dart';
+import 'package:ppb_test/service/database/firestore.dart';
 import 'package:ppb_test/view/pages/login_page.dart';
 import 'package:ppb_test/view/widgets/hero_widget.dart';
 
@@ -14,6 +15,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  FirestoreService db = FirestoreService();
+
+  final controllerName = TextEditingController();
   final controllerEmail = TextEditingController();
   final controllerPass = TextEditingController();
   final controllerConfirmPass = TextEditingController();
@@ -22,10 +26,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
+    controllerName.dispose();
     controllerEmail.dispose();
     controllerPass.dispose();
     controllerConfirmPass.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -47,8 +57,20 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 30.0),
                       TextField(
+                        controller: controllerName,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.person),
+                          hintText: 'Full Name',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      TextField(
                         controller: controllerEmail,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
                           hintText: 'Email',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
@@ -60,6 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: controllerPass,
                         obscureText: !isPasswordVisible,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
                           hintText: 'Password',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
@@ -83,6 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: controllerConfirmPass,
                         obscureText: !isConfirmPasswordVisible,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
                           hintText: 'Confirm Password',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
@@ -159,7 +183,8 @@ class _RegisterPageState extends State<RegisterPage> {
   void onRegisterPressed() async {
     final authService = AuthService();
 
-    if (controllerEmail.text.isEmpty ||
+    if (controllerName.text.isEmpty ||
+        controllerEmail.text.isEmpty ||
         controllerPass.text.isEmpty ||
         controllerConfirmPass.text.isEmpty) {
       showAnimation(
@@ -182,9 +207,18 @@ class _RegisterPageState extends State<RegisterPage> {
     if (controllerPass.text == controllerConfirmPass.text) {
       try {
         await authService.signUpWithEmailPassword(
+          controllerName.text,
           controllerEmail.text,
           controllerPass.text,
         );
+
+        // save user data to firestore
+        await db.saveUserDataToDatabase(
+          controllerName.text,
+          controllerEmail.text,
+          controllerPass.text,
+        );
+
         showAnimation(
           'Registration Success!',
           'assets/lotties/login.json',

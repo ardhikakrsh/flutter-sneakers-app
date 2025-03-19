@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:ppb_test/components/my_button.dart';
+import 'package:ppb_test/components/my_slide_button.dart';
 import 'package:ppb_test/view/pages/delivery_progress_page.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -63,61 +63,30 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
               ),
             ),
-
-            // Button selalu di bawah
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: MyButton(
-                text: 'Pay Now',
-                icon: Icons.payment,
-                onPressed: () {
-                  userTappedPay();
+              child: MySlideButton(
+                text: 'Slide to Pay',
+                icon: Icons.attach_money_rounded,
+                onSubmit: () {
+                  userSlidePay();
+                  return Future.value(true);
                 },
               ),
             ),
+            SizedBox(height: 10),
           ],
         ),
       ),
     );
   }
 
-  void userTappedPay() {
+  void userSlidePay() {
     if (formKey.currentState!.validate()) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Confirm Payment'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                Text('Card Number: $cardNumber'),
-                Text('Expiry Date: $expiryDate'),
-                Text('Card Holder: $cardHolderName'),
-                Text('CVV: $cvvCode'),
-              ],
-            ),
-          ),
-          actions: [
-            // cancel button
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Cancel'),
-            ),
-            // yes button
-            TextButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DeliveryProgressPage(),
-                  ),
-                );
-              },
-              child: const Text('Yes'),
-            ),
-          ],
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const DeliveryProgressPage(),
         ),
       );
     }

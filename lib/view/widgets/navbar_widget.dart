@@ -1,33 +1,36 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ppb_test/data/notifiers.dart';
 
-class NavbarWidget extends StatelessWidget {
+class NavbarWidget extends StatefulWidget {
   const NavbarWidget({super.key});
 
+  @override
+  State<NavbarWidget> createState() => _NavbarWidgetState();
+}
+
+class _NavbarWidgetState extends State<NavbarWidget> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: selectedPageNotifier,
       builder: (context, selectedPage, child) {
-        return NavigationBar(
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              label: 'Home',
+        return CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          height: 70,
+          color: Colors.blueAccent,
+          items: const [
+            Icon(
+              Icons.home,
+              color: Colors.white,
             ),
-            NavigationDestination(
-              icon: Icon(Icons.search),
-              label: 'Colletions',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
+            Icon(Icons.search, color: Colors.white),
+            Icon(Icons.person, color: Colors.white),
           ],
-          onDestinationSelected: (value) {
-            selectedPageNotifier.value = value;
+          index: selectedPage,
+          onTap: (index) {
+            selectedPageNotifier.value = index;
           },
-          selectedIndex: selectedPage,
         );
       },
     );

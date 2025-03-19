@@ -38,7 +38,7 @@ class MyDrawer extends StatelessWidget {
               ),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage(
-                    'assets/icons/logo4.jpg'), // Ganti dengan logo Anda
+                    'assets/icons/app_logo.png'), // Ganti dengan logo Anda
                 backgroundColor: Colors.white,
               ),
             ),

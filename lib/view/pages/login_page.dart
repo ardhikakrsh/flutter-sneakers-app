@@ -138,9 +138,15 @@ class _LoginPageState extends State<LoginPage> {
   void onLoginPressed() async {
     final authService = AuthService();
 
+    if (controllerEmail.text.isEmpty || controllerPass.text.isEmpty) {
+      showAnimation(
+          'Please fill all fields', 'assets/lotties/error.json', false);
+      return;
+    }
+
     // try sign in
     try {
-      await authService.signInWithEmailPassword(
+      await authService.signInWithEmailAndPassword(
         controllerEmail.text,
         controllerPass.text,
       );

@@ -225,8 +225,7 @@ class _RegisterPageState extends State<RegisterPage> {
           true,
         );
       } catch (e) {
-        showAnimation(
-            'Registration Failed', 'assets/lotties/error.json', false);
+        showAnimation(e.toString(), 'assets/lotties/error.json', false);
       }
     }
   }

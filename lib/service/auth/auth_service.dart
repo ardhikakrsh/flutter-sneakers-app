@@ -10,7 +10,7 @@ class AuthService {
   }
 
   // sign in
-  Future<UserCredential> signInWithEmailPassword(
+  Future<UserCredential> signInWithEmailAndPassword(
       String email, String password) async {
     try {
       // sign in user

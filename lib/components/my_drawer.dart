@@ -90,7 +90,10 @@ class MyDrawer extends StatelessWidget {
                 logout();
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const WelcomePage()),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const WelcomePage(),
+                  ),
                 );
               },
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/view/pages/login_page.dart';
 import 'package:ppb_test/view/pages/register_page.dart';
 
@@ -31,8 +32,9 @@ class WelcomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => const RegisterPage(),
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: const RegisterPage(),
                           ),
                         );
                       },
@@ -50,8 +52,9 @@ class WelcomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: const LoginPage(),
                           ),
                         );
                       },

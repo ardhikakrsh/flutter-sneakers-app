@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/service/database/firestore.dart';
 import 'package:ppb_test/view/pages/login_page.dart';
@@ -150,8 +151,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginPage()),
+                                PageTransition(
+                                  type: PageTransitionType.sharedAxisScale,
+                                  child: const LoginPage(),
+                                ),
                               );
                             },
                             child: const Text(
@@ -263,8 +266,9 @@ class _RegisterPageState extends State<RegisterPage> {
         Navigator.pop(context);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) => const LoginPage(),
+          PageTransition(
+            type: PageTransitionType.fade,
+            child: const LoginPage(),
           ),
         );
       });

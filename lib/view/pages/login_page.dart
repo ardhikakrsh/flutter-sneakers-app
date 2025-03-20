@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/service/auth/auth_service.dart';
+import 'package:ppb_test/service/auth/welcome_page.dart';
+import 'package:ppb_test/view/pages/forgot_password_page.dart';
 import 'package:ppb_test/view/pages/register_page.dart';
 import 'package:ppb_test/view/widget_tree.dart';
 import 'package:ppb_test/view/widgets/hero_widget.dart';
@@ -80,6 +83,26 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 10.0),
 
+                    // text forgot password
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              child: const ForgotPasswordPage(),
+                              type: PageTransitionType.sharedAxisScale,
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Forgot Password?',
+                          style: TextStyle(color: Colors.blueAccent),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
                     // Login Button
                     FilledButton(
                       onPressed: onLoginPressed,
@@ -103,8 +126,9 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => const RegisterPage(),
+                              PageTransition(
+                                type: PageTransitionType.sharedAxisScale,
+                                child: const RegisterPage(),
                               ),
                             );
                           },
@@ -161,6 +185,9 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -189,8 +216,9 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pop(context);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) => const WidgetTree(),
+          PageTransition(
+            type: PageTransitionType.fade,
+            child: const WidgetTree(),
           ),
         );
       });

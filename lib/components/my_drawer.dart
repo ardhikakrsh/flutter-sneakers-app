@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/view/pages/cart_page.dart';
 import 'package:ppb_test/view/pages/history_page.dart';
@@ -48,7 +49,10 @@ class MyDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CartPage()),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const CartPage(),
+                  ),
                 );
               },
             ),
@@ -58,7 +62,10 @@ class MyDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SettingsPage()),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const SettingsPage(),
+                  ),
                 );
               },
             ),
@@ -68,7 +75,10 @@ class MyDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HistoryPage()),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const HistoryPage(),
+                  ),
                 );
               },
             ),

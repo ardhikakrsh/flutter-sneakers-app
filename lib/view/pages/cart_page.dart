@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/components/my_button.dart';
 import 'package:ppb_test/components/my_cart_tile.dart';
 import 'package:ppb_test/models/store.dart';
@@ -87,8 +88,9 @@ class CartPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const PaymentPage(),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: const PaymentPage(),
                     ),
                   );
                 },

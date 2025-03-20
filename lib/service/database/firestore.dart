@@ -30,12 +30,14 @@ class FirestoreService {
   // save user data to db firestore
   Future<void> saveUserDataToDatabase(
       String name, String email, String password) async {
-    await users.add({
-      'createdAt': DateTime.now(),
-      'name': name,
-      'email': email,
-      'password': hashPassword(password),
-      // add more fields here if needed
-    });
+    await users.add(
+      {
+        'createdAt': DateTime.now(),
+        'name': name,
+        'email': email,
+        'password': hashPassword(password),
+        // add more fields here if needed
+      },
+    );
   }
 }

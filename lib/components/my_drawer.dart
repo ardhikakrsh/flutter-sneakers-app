@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/service/auth/auth_service.dart';
 import 'package:ppb_test/view/pages/cart/cart_page.dart';
-import 'package:ppb_test/view/pages/history_page.dart';
-import 'package:ppb_test/view/pages/settings_page.dart';
+import 'package:ppb_test/view/pages/drawer/history_page.dart';
+import 'package:ppb_test/view/pages/drawer/settings_page.dart';
 import 'package:ppb_test/service/auth/welcome_page.dart';
 
 class MyDrawer extends StatelessWidget {

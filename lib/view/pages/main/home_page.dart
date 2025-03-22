@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ppb_test/components/my_categories.dart';
 import 'package:ppb_test/models/shoes.dart';
 import 'package:ppb_test/models/store.dart';
-import 'package:ppb_test/view/pages/collection/sneakers_detail_page.dart';
+import 'package:ppb_test/view/pages/sneakers/sneakers_detail_page.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppb_test/components/my_card.dart';
-import 'sneakers_detail_page.dart';
+import '../sneakers/sneakers_detail_page.dart';
 import 'package:ppb_test/models/shoes.dart';
 import 'package:ppb_test/models/store.dart';
 

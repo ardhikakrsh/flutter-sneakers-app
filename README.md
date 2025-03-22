@@ -1,16 +1,26 @@
 # Sneakers App Sole City Kicks
 
-A new Flutter project.
+Sole City Kicks is a sneaker marketplace mobile app built using Flutter for the frontend and Firebase for the backend. The payment system is integrated with Midtrans as the payment gateway.
 
-## Getting Started
+# Tech Stack:
 
-This project is a starting point for a Flutter application.
+- Flutter (Frontend)
+- Firebase (Authentication, Firestore, Storage)
+- Node.js (Handle payment processing)
+- Midtrans (Payment Gateway)
 
-A few resources to get you started if this is your first Flutter project:
+## How to use
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Run in your device
+- For Android emulator -> `Uri.parse('http://10.0.2.2:3000/create-transaction'),` 
+- For iOS simulator -> `Uri.parse('http://localhost:3000/create-transaction'),`
+- For Physical device -> `Uri.parse('http://your-ip-computer:3000/create-transaction'),`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Run the backend
+- cd path/to/placeOrder.js
+- `node placeOrder.js`
+
+Use the Midtrans sandbox environment for payment simulation during development. You can test payment flows and simulate transactions without making real payments by visiting:
+- API Keys: Retrieve your Server Key and Client Key from the Midtrans Sandbox Dashboard (if demo)
+- https://simulator.sandbox.midtrans.com/
+

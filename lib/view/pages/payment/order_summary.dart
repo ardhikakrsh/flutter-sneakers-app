@@ -6,6 +6,7 @@ import 'package:midtrans_sdk/midtrans_sdk.dart';
 import 'package:ppb_test/components/my_slide_button.dart';
 import 'package:ppb_test/models/cart_item.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppb_test/view/pages/payment/snap_web_view_screen.dart';
 
 class PaymentPage extends StatefulWidget {
   final String name;
@@ -89,6 +90,9 @@ class _PaymentPageState extends State<PaymentPage> {
         Uri.parse(
             'http://10.0.2.2:3000/create-transaction'), // For Android emulator
         // Uri.parse('http://localhost:3000/create-transaction'), // For iOS simulator
+        // Uri.parse(
+        //     'http://192.168.0.8:3000/create-transaction'), // For physical device
+
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "order_id": "ORDER-${DateTime.now().millisecondsSinceEpoch}",
@@ -252,20 +256,19 @@ class _PaymentPageState extends State<PaymentPage> {
                 )
               else
                 MySlideButton(
-                  text: 'Slide to Pay',
+                  text: 'Slide to Payment',
                   icon: Icons.payment,
                   onSubmit: () async {
-                    if (transactionToken != null) {
-                      await _midtrans?.startPaymentUiFlow(
-                          token: transactionToken!);
-                      return true;
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text("Payment token not available")),
-                      );
-                      return false;
-                    }
+                    // arahkan ke snap page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SnapWebViewScreen(
+                          url:
+                              'https://app.sandbox.midtrans.com/snap/v4/redirection/$transactionToken',
+                        ),
+                      ),
+                    );
                   },
                 ),
             ],

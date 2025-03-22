@@ -1,3 +1,4 @@
 {
-  "cmake.sourceDirectory": "C:/Users/rog/Documents/project/flutter/ppb_test/linux"
+  "cmake.sourceDirectory": "C:/Users/rog/Documents/project/flutter/ppb_test/linux",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -11,6 +11,7 @@ class Store extends ChangeNotifier {
   final List<Shoes> _sneakers = [
     //basketball
     Shoes(
+        id: '1',
         name: 'Nike GT Cut 2 Hyperpink',
         imagePath: 'assets/img/basketball/hyperpink.png',
         description:
@@ -19,6 +20,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
+        id: '2',
         name: 'Nike GT Cut 2 We Are All Greater',
         imagePath: 'assets/img/basketball/weareallgreater.png',
         description:
@@ -27,6 +29,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
+        id: '3',
         name: 'Nike Kobe 4 Philly',
         imagePath: 'assets/img/basketball/kobe4philly.png',
         description:
@@ -35,6 +38,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
+        id: '4',
         name: 'Nike Kobe 5 Undeafeated',
         imagePath: 'assets/img/basketball/kobe5undefeated.png',
         description:
@@ -43,6 +47,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
+        id: '5',
         name: 'Nike Kobe 6 Grinch',
         imagePath: 'assets/img/basketball/kobe6grinch.png',
         description:
@@ -51,6 +56,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.basketball),
     Shoes(
+        id: '6',
         name: 'Nike Kobe 8 Protro Radiant Emerald',
         imagePath: 'assets/img/basketball/kobe8emerald.png',
         description:
@@ -61,6 +67,7 @@ class Store extends ChangeNotifier {
 
     //sneaker
     Shoes(
+        id: '7',
         name: 'Air Jordan 1 High Dark Mocha',
         imagePath: 'assets/img/sneaker/aj1mocha.png',
         description:
@@ -69,6 +76,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
+        id: '8',
         name: 'Nike Dunk Low Georgetown',
         imagePath: 'assets/img/sneaker/dunklowgeorge.png',
         description:
@@ -77,6 +85,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
+        id: '9',
         name: 'Nike Dunk Low Grey Fog',
         imagePath: 'assets/img/sneaker/dunklowgrey.png',
         description:
@@ -85,6 +94,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
+        id: '10',
         name: 'Nike P-6000 Flat Pewter',
         imagePath: 'assets/img/sneaker/p6000_flatpewter.png',
         description:
@@ -93,6 +103,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.sneaker),
     Shoes(
+        id: '11',
         name: 'Nike P-6000 Metallic Silver Sail',
         imagePath: 'assets/img/sneaker/p6000_metallic.png',
         description:
@@ -102,6 +113,7 @@ class Store extends ChangeNotifier {
         category: SneakersCategory.sneaker),
     //running
     Shoes(
+        id: '12',
         name: 'Nike Air Zoom Alphafly Next% Barely Volt Orange',
         imagePath: 'assets/img/running/alphafly_volt.png',
         description:
@@ -110,6 +122,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.running),
     Shoes(
+        id: '13',
         name: 'Nike Air Zoom Alphafly NEXT% Eliud Kipchoge',
         imagePath: 'assets/img/running/alphafly_eliud.png',
         description:
@@ -119,6 +132,7 @@ class Store extends ChangeNotifier {
         category: SneakersCategory.running),
     //football
     Shoes(
+        id: '14',
         name: 'Nike Phantom GX Elite SE FG Thunder Pack',
         imagePath: 'assets/img/football/phantom_thunder.png',
         description:
@@ -127,6 +141,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.football),
     Shoes(
+        id: '15',
         name: 'Nike Phantom GX Elite Gripknit DF FG Peak Ready Pack',
         imagePath: 'assets/img/football/phantom_gripknit.png',
         description:
@@ -135,6 +150,7 @@ class Store extends ChangeNotifier {
         size: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45.5, 46],
         category: SneakersCategory.football),
     Shoes(
+        id: '16',
         name: 'Nike Mercurial Dream Speed Superfly 8 Elite FG Bright Mango',
         imagePath: 'assets/img/football/mecurial_mango.png',
         description:

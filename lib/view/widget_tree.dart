@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:ppb_test/components/my_drawer.dart';
 import 'package:ppb_test/data/notifiers.dart';
-import 'package:ppb_test/view/pages/cart_page.dart';
-import 'package:ppb_test/view/pages/collections_page.dart';
+import 'package:ppb_test/view/pages/cart/cart_page.dart';
+import 'package:ppb_test/view/pages/collection/collections_page.dart';
 import 'package:ppb_test/view/pages/home_page.dart';
-import 'package:ppb_test/view/pages/profile_page.dart';
+import 'package:ppb_test/view/pages/profile/profile_page.dart';
 import 'package:ppb_test/view/widgets/navbar_widget.dart';
 
 List<Widget> pages = [

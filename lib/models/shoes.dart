@@ -1,4 +1,5 @@
 class Shoes {
+  final String id;
   final String name; // nike gt cut 2 hyperpink
   final String imagePath; // assets/img/hyperpink.png
   final String
@@ -8,6 +9,7 @@ class Shoes {
   final SneakersCategory category; // basketball
 
   Shoes({
+    required this.id,
     required this.name,
     required this.imagePath,
     required this.description,

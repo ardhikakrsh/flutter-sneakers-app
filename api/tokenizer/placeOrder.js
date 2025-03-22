@@ -58,7 +58,7 @@ app.post("/create-transaction", async (req, res) => {
 
     console.log("Transaction created successfully:", transaction);
 
-    // Return the token to the client
+    // Return the token and redirect URL to the client
     res.json({
       token: transaction.token,
       redirect_url: transaction.redirect_url,
@@ -70,44 +70,6 @@ app.post("/create-transaction", async (req, res) => {
       message: error.message,
       details: error.details || "No additional details",
     });
-  }
-});
-
-// API endpoint for notification handling
-app.post("/notification", async (req, res) => {
-  try {
-    const notification = await snap.transaction.notification(req.body);
-    const orderId = notification.order_id;
-    const transactionStatus = notification.transaction_status;
-    const fraudStatus = notification.fraud_status;
-
-    console.log(
-      `Transaction notification received. Order ID: ${orderId}. Transaction status: ${transactionStatus}. Fraud status: ${fraudStatus}`
-    );
-
-    // Sample for handling the notification based on transaction status
-    if (transactionStatus == "capture") {
-      if (fraudStatus == "challenge") {
-        // TODO: handle transaction challenged by FDS
-      } else if (fraudStatus == "accept") {
-        // TODO: handle transaction success
-      }
-    } else if (transactionStatus == "settlement") {
-      // TODO: handle transaction settlement
-    } else if (
-      transactionStatus == "cancel" ||
-      transactionStatus == "deny" ||
-      transactionStatus == "expire"
-    ) {
-      // TODO: handle transaction failed
-    } else if (transactionStatus == "pending") {
-      // TODO: handle transaction pending
-    }
-
-    res.status(200).json({ status: "OK" });
-  } catch (error) {
-    console.error("Error processing notification:", error);
-    res.status(500).json({ error: error.message });
   }
 });
 

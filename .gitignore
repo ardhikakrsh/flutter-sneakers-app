@@ -42,8 +42,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-.metadata
-firebase.json
 node_modules/
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
